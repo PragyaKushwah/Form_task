@@ -68,3 +68,26 @@
 		
 		</script>
 
+   <script>
+    $(document).ready(function() {
+      $("#task_percentage").on("input", function() {
+        var number = parseFloat($(this).val());
+
+        // Check if the number is within the allowed range
+        if (number >= 0 && number <= 100) {
+          // Check if the number has more than 2 decimal places
+          if (number.toString().split(".")[1]?.length > 2) {
+            // Invalid number, remove the last entered character
+            $(this).val(function(_, currentValue) {
+              return currentValue.slice(0, -1);
+            });
+          }
+        } else {
+          // Invalid number, remove the last entered character
+          $(this).val(function(_, currentValue) {
+            return currentValue.slice(0, -1);
+          });
+        }
+      });
+    });
+  </script>
